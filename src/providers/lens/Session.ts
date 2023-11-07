@@ -2,8 +2,8 @@ import { getWalletClient } from 'wagmi/actions';
 import { Session } from '@/providers/types/Session';
 import { BaseSession } from '@/providers/base/Session';
 import { Type } from '@/providers/types/SocialMedia';
-import { LensClient, development, production } from '@lens-protocol/client';
 import { generateCustodyBearer } from '@/helpers/generateCustodyBearer';
+import { createLensClient } from '@/helpers/createLensClient';
 
 export class LensSession extends BaseSession implements Session {
     constructor(
@@ -11,9 +11,7 @@ export class LensSession extends BaseSession implements Session {
         public token: string,
         public createdAt: number,
         public expiresAt: number,
-        private client = new LensClient({
-            environment: process.env.NODE_ENV === 'production' ? production : development,
-        }),
+        private client = createLensClient(),
     ) {
         super(Type.Lens, profileId, token, createdAt, expiresAt);
     }

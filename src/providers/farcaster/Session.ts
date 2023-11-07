@@ -1,5 +1,4 @@
 import urlcat from 'urlcat';
-import { WARPCAST_ROOT_URL } from '@/constants';
 import { fetchJSON } from '@/helpers/fetchJSON';
 import { Session } from '@/providers/types/Session';
 import { BaseSession } from '@/providers/base/Session';
@@ -24,7 +23,7 @@ export class FarcasterSession extends BaseSession implements Session {
             result: {
                 success: boolean;
             };
-        }>(urlcat(WARPCAST_ROOT_URL, '/auth'), {
+        }>(urlcat(process.env.WARPCAST_ROOT_URL, '/auth'), {
             method: 'DELETE',
             headers: {
                 Authorization: `Bearer ${this.token}`,

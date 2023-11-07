@@ -3,6 +3,7 @@ import { generateCustodyBearer } from '@/helpers/generateCustodyBearer';
 import {
     NetworkType,
     Notification,
+    NotificationType,
     Post,
     Profile,
     ProfileStatus,
@@ -15,25 +16,17 @@ import { Session } from '@/providers/types/Session';
 import {
     AnyPublicationFragment,
     ExploreProfilesOrderByType,
-    LensClient,
     ProfileFragment,
     PublicationReactionType,
     PublicationType,
-    development,
     isRelaySuccess,
-    production,
 } from '@lens-protocol/client';
 import { LensSession } from '@/providers/lens/Session';
 import { Pageable } from '@/helpers/createPageable';
+import { createLensClient } from '@/helpers/createLensClient';
 
 export class LensSocialMedia implements Provider {
-    lensClient: LensClient;
-
-    constructor() {
-        this.lensClient = new LensClient({
-            environment: process.env.NODE_ENV === 'production' ? production : development,
-        });
-    }
+    private lensClient = createLensClient();
 
     getReactors!: (postId: string) => Promise<Pageable<Profile, unknown>>;
 
@@ -426,7 +419,7 @@ export class LensSocialMedia implements Provider {
 
                     return {
                         notificationId: item.id,
-                        type: 'mirror',
+                        type: NotificationType.Mirror,
                         mirror: await this.getPostById(item.mirrors[0].mirrorId),
                         post: await this.getPostById(item.publication.id),
                     };
@@ -436,7 +429,7 @@ export class LensSocialMedia implements Provider {
                     const quote = await this.getPostById(item.quote.id);
                     return {
                         notificationId: item.id,
-                        type: 'quote',
+                        type: NotificationType.Quote,
                         quote,
                         post: quote,
                     };
@@ -447,7 +440,7 @@ export class LensSocialMedia implements Provider {
 
                     return {
                         notificationId: item.id,
-                        type: 'reaction',
+                        type: NotificationType.Reaction,
                         reaction: ReactionType.Upvote,
                         reactor: this.formatProfile(item.reactions[0].profile),
                         post: await this.getPostById(item.publication.id),
@@ -458,7 +451,7 @@ export class LensSocialMedia implements Provider {
                     const post = await this.getPostById(item.comment.commentOn.id);
                     return {
                         notificationId: item.id,
-                        type: 'comment',
+                        type: NotificationType.Comment,
                         comment: {
                             commentId: item.comment.id,
                             timestamp: Number(item.comment.createdAt),
@@ -474,7 +467,7 @@ export class LensSocialMedia implements Provider {
 
                     return {
                         notificationId: item.id,
-                        type: 'follow',
+                        type: NotificationType.Follow,
                         follower: this.formatProfile(item.followers[0]),
                     };
                 }
@@ -484,7 +477,7 @@ export class LensSocialMedia implements Provider {
 
                     return {
                         notificationId: item.id,
-                        type: 'mention',
+                        type: NotificationType.Mention,
                         post,
                     };
                 }

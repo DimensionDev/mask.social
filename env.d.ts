@@ -16,5 +16,7 @@ declare namespace NodeJS {
 
         FARCASTER_SIGNER_FID: string;
         FARCASTER_SIGNER_MNEMONIC: string;
+
+        WARPCAST_ROOT_URL: string;
     }
 }

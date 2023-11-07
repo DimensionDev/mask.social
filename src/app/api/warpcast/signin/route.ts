@@ -4,7 +4,6 @@ import { NextRequest } from 'next/server';
 import { toHex } from 'viem';
 import { mnemonicToAccount } from 'viem/accounts';
 import { utils, getPublicKeyAsync } from '@noble/ed25519';
-import { WARPCAST_ROOT_URL } from '@/constants';
 import { fetchJSON } from '@/helpers/fetchJSON';
 import { createSuccessResponseJSON } from '@/helpers/createSuccessResponseJSON';
 
@@ -54,7 +53,7 @@ export async function POST(req: NextRequest) {
                 state: 'pending' | 'completed';
             };
         };
-    }>(urlcat(WARPCAST_ROOT_URL, '/signed-key-requests'), {
+    }>(urlcat(process.env.WARPCAST_ROOT_URL, '/signed-key-requests'), {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

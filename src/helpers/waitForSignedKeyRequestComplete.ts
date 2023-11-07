@@ -1,7 +1,6 @@
 import urlcat from 'urlcat';
 import { delay } from '@/helpers/delay';
 import { fetchJSON } from '@/helpers/fetchJSON';
-import { WARPCAST_ROOT_URL } from '@/constants';
 
 export function waitForSignedKeyRequestComplete(signal?: AbortSignal) {
     return async (token: string, maxTries = 100, ms = 2000) => {
@@ -18,7 +17,7 @@ export function waitForSignedKeyRequestComplete(signal?: AbortSignal) {
                 state: 'pending' | 'complete';
                 errors?: Array<{ message: string }>;
             }>(
-                urlcat(WARPCAST_ROOT_URL, '/signed-key-request', {
+                urlcat(process.env.WARPCAST_ROOT_URL, '/signed-key-request', {
                     token,
                 }),
             );
