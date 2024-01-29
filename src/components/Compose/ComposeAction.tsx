@@ -25,7 +25,7 @@ import { ComposeModalRef } from '@/modals/controls.js';
 import { useComposeStateStore } from '@/store/useComposeStore.js';
 import { useFarcasterStateStore, useLensStateStore } from '@/store/useProfileStore.js';
 
-interface ComposeActionProps {}
+interface ComposeActionProps { }
 export default function ComposeAction(props: ComposeActionProps) {
     const [restriction, setRestriction] = useState(0);
 
@@ -81,7 +81,6 @@ export default function ComposeAction(props: ComposeActionProps) {
         await delay(300);
         CrossIsolationMessages.events.redpacketDialogEvent.sendToLocal({ open: true });
     }, []);
-
     const maxImageCount = currentFarcasterProfile ? 2 : 4;
 
     const mediaDisabled = !!video || images.length >= maxImageCount;
