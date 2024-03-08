@@ -27,7 +27,8 @@ export function Post({ post }: PostProps) {
                             <p>{post.author.displayName}</p>
                             <p>
                                 <span>{post.author.handle}</span>
-                                <span>{post.metadata.createdAt}</span>
+                                <span>•</span>
+                                <span>{post.timestamp}</span>
                             </p>
                         </div>
                     </div>
