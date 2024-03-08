@@ -3,8 +3,8 @@
 import { compact, first } from 'lodash-es';
 
 import { PostContainer } from '@/components/Post/PostContainer.js';
-import type { Post } from '@/providers/types/SocialMedia.js';
 import { SourceIcon } from '@/components/SourceIcon.jsx';
+import type { Post } from '@/providers/types/SocialMedia.js';
 
 interface PostProps {
     post: Post;
