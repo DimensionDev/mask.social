@@ -23,7 +23,7 @@ export function CoverContainer({ theme, children, ...props }: CoverContainerProp
                 // backgroundSize: '100% 100%',
                 // backgroundImage: theme.normal.bg_image ? `url("${theme.normal.bg_image}")` : '',
                 // backgroundColor: theme.normal.bg_color ?? 'transparent',
-                backgroundRepeat: 'no-repeat',
+                // backgroundRepeat: 'no-repeat',
                 borderRadius: 45,
                 ...props.ContainerStyle,
             }}
