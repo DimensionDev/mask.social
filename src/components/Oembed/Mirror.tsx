@@ -55,9 +55,9 @@ export const Mirror = memo<MirrorProps>(function Mirror({
                   cursor-pointer rounded-2xl border border-solid border-third bg-primaryBottom px-4
                   py-3
 
-                  hover:bg-bg
-
                   dark:bg-secondaryBottom
+
+                  hover:bg-bg
                 `}
                 >
                     <div className="flex items-center justify-between">

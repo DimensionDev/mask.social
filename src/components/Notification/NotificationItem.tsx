@@ -366,9 +366,9 @@ export const NotificationItem = memo<NotificationItemProps>(function Notificatio
             className={`
               border-b border-secondaryLine px-4 py-3
 
-              hover:bg-bg
-
               dark:border-line
+
+              hover:bg-bg
             `}
         >
             <div className="flex justify-between">

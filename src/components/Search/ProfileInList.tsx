@@ -19,9 +19,9 @@ export function ProfileInList({ profile, noFollowButton }: ProfileInListProps) {
             className={`
           flex-start flex cursor-pointer overflow-auto border-b border-secondaryLine px-4 py-6
 
-          hover:bg-bg
-
           dark:border-line
+
+          hover:bg-bg
         `}
         >
             <Link className="flex-start flex flex-1 overflow-auto" href={getProfileUrl(profile)}>

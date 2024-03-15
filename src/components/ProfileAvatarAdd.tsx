@@ -24,9 +24,9 @@ export function ProfileAvatarAdd(props: ProfileAvatarAddProps) {
             className={`
           relative cursor-pointer
 
-          md:mx-auto
-
           lg:m-0
+
+          md:mx-auto
         `}
             style={style}
             {...divProps}

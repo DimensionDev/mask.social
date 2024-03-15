@@ -9,9 +9,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 className={`
               hidden min-h-screen w-full flex-1 pl-0
 
-              md:flex
+              lg:pl-72
 
-              md:pl-[61px] lg:pl-72
+              md:flex md:pl-[61px]
             `}
             >
                 <SettingsList />

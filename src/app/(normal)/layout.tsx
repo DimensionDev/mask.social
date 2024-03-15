@@ -11,9 +11,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 className={`
               w-full flex-[1_1_100%] border-r border-line
 
-              md:pl-[61px] lg:w-[888px] lg:max-w-[calc(100%-384px)]
+              lg:w-[888px] lg:max-w-[calc(100%-384px)] lg:pl-[289px]
 
-              lg:pl-[289px]
+              md:pl-[61px]
             `}
             >
                 <div className="sticky top-0 z-40 bg-primaryBottom pb-[1px]">
@@ -29,9 +29,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 className={`
               sticky top-0 z-[1] hidden h-full w-96 px-4
 
-              md:min-w-[384px]
-
               lg:block
+
+              md:min-w-[384px]
             `}
             >
                 <IfPathname isNotOneOf={['/settings']}>
